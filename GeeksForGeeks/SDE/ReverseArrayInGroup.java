@@ -29,18 +29,31 @@ Output:
 [8, 7, 6, 5, 4, 3, 2, 1]
 */
 
-class ReverseArrayInGroup{
-  private static int[] reverseArray(int []arr, int k, int length){
-
+class ReverseArrayInGroup {
+  public static void main(String[] arg) {
+    int[] arr = { 1, 2, 3, 4, 5, 6, 7, 8 };
+    int k = 8;
+    int i = 0;
+    int maxIndex = arr.length - 1;
+    while (i <= maxIndex) {
+      reverseArray(arr, i, k, maxIndex);
+      i = i + k;
+    }
   }
 
-  private static int[] reverse(int []arr, int length){
-    int [] reversedArray = new int[length];
-    int k=0;
-    for(int i=length-1;i>=0;i--){
-      reversedArray[k++] = arr[i];
+  private static void reverseArray(int[] arr, int i, int k, int maxIndex) {
+    int index = i + k - 1;
+    if (index > maxIndex) {
+      index = maxIndex;
     }
-    return reversedArray;
+    int[] reversedArray = new int[index - i + 1];
+    int j = 0;
+    for (int s = index; s >= i; s--) {
+      reversedArray[j] = arr[s];
+      System.out.print(reversedArray[j] + " ");
+      j++;
+    }
+
   }
 
 }
